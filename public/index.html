@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus Bank • Private Banking Redefined</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e0e0e0;
+        line-height: 1.6;
+      }
+
+      /* Header */
+      header {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(12px);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      nav {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 1.2rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.85rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+      }
+
+      .logo::before {
+        content: "◆";
+        font-size: 2rem;
+        color: #00d4ff;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #cccccc;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #ffffff;
+      }
+
+      .auth-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.4s ease;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: #ffffff;
+        border: 2px solid #555;
+      }
+
+      .btn-outline:hover {
+        border-color: #00d4ff;
+        color: #00d4ff;
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        color: #000;
+        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        background:
+          linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.9)),
+          url("https://source.unsplash.com/1920x1080/?luxury,modern,architecture")
+            center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: 3.8rem;
+        line-height: 1.15;
+        font-weight: 700;
+        letter-spacing: -1.5px;
+        margin-bottom: 1.5rem;
+        color: #ffffff;
+      }
+
+      .hero-text p {
+        font-size: 1.35rem;
+        color: #aaaaaa;
+        margin-bottom: 2.5rem;
+        max-width: 520px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      /* Features */
+      .features {
+        padding: 120px 0;
+        background: #111111;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2.5rem;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 4rem;
+        color: #ffffff;
+        letter-spacing: -1px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .feature-card {
+        background: #1a1a1a;
+        padding: 3rem 2.2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: all 0.4s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-12px);
+        border-color: rgba(0, 212, 255, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .feature-icon {
+        font-size: 3.8rem;
+        margin-bottom: 1.8rem;
+        display: block;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
+
+      /* Trust */
+      .trust {
+        background: #0a0a0a;
+        padding: 50px 0;
+        border-top: 1px solid #222;
+        border-bottom: 1px solid #222;
+      }
+
+      .trust-logos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;
+        flex-wrap: wrap;
+        filter: grayscale(100%) brightness(0.7);
+        opacity: 0.75;
+      }
+
+      .trust-logos img {
+        height: 32px;
+        transition: all 0.3s;
+      }
+
+      .trust-logos img:hover {
+        filter: grayscale(0%) brightness(1.2);
+        opacity: 1;
+      }
+
+      /* Footer */
+      footer {
+        background: #080808;
+        padding: 100px 0 40px;
+        border-top: 1px solid #1a1a1a;
+      }
+
+      .footer-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2.5rem;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 4rem;
+      }
+
+      .footer-col h3 {
+        color: #ffffff;
+        margin-bottom: 1.8rem;
+        font-size: 1.35rem;
+      }
+
+      .footer-col a {
+        color: #999999;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 1rem;
+        transition: color 0.3s;
+      }
+
+      .footer-col a:hover {
+        color: #00d4ff;
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 80px;
+        padding-top: 30px;
+        border-top: 1px solid #1a1a1a;
+        color: #555;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 768px) {
+        .hero-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 3rem;
+        }
+
+        .hero-text h1 {
+          font-size: 2.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <div class="logo">Nexus Bank</div>
+        <ul class="nav-links">
+          <li><a href="#">Personal</a></li>
+          <li><a href="#">Private Banking</a></li>
+          <li><a href="#">Wealth Management</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+          <a href="#" class="btn btn-outline">Client Login</a>
+          <a href="#" class="btn btn-primary">Open Private Account</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Elegant Banking.<br />Exceptional Service.</h1>
+          <p>
+            Experience private banking designed for those who value discretion,
+            sophistication, and superior returns.
+          </p>
+
+          <div class="hero-buttons">
+            <a
+              href="#"
+              class="btn btn-primary"
+              style="padding: 18px 36px; font-size: 1.15rem"
+              >Become a Client</a
+            >
+            <a
+              href="#"
+              class="btn btn-outline"
+              style="padding: 18px 36px; font-size: 1.15rem"
+              >Explore Services</a
+            >
+          </div>
+
+          <p style="margin-top: 2.5rem; font-size: 1.05rem; color: #777">
+            FDIC Insured • Swiss-level Security • 24/7 Concierge Support
+          </p>
+        </div>
+
+        <div>
+          <img
+            src="https://source.unsplash.com/700x800/?luxury,smartphone,banking"
+            alt="Nexus Banking Experience"
+            style="
+              width: 100%;
+              border-radius: 24px;
+              box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            "
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Crafted for Excellence</h2>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-icon">🏦</span>
+            <h3>Private Wealth Management</h3>
+            <p>
+              Personalized investment strategies with dedicated relationship
+              managers.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">🔐</span>
+            <h3>Fortress Security</h3>
+            <p>
+              Multi-layered protection including biometric access and end-to-end
+              encryption.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">💎</span>
+            <h3>Exclusive Rewards</h3>
+            <p>
+              Luxury lifestyle benefits, airport lounge access, and premium
+              concierge services.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">🌍</span>
+            <h3>Global Banking</h3>
+            <p>
+              Seamless international transfers and multi-currency accounts with
+              no hidden fees.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">📈</span>
+            <h3>Superior Returns</h3>
+            <p>
+              Competitive interest rates and access to exclusive investment
+              opportunities.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">🤝</span>
+            <h3>White-Glove Service</h3>
+            <p>
+              Personal relationship managers available 24/7 for your financial
+              needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust">
+      <div class="container">
+        <div class="trust-logos">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Forbes_logo.svg/2560px-Forbes_logo.svg.png"
+            alt="Forbes"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BBC.svg/2560px-BBC.svg.png"
+            alt="BBC"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/2560px-Apple_logo_black.svg.png"
+            alt="Apple"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"
+            alt="Google"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 style="color: #fff; font-size: 2.2rem; letter-spacing: -1px">
+            Nexus Bank
+          </h2>
+          <p style="color: #777; margin-top: 10px">
+            Private banking for the discerning few.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Services</h3>
+          <a href="#">Private Banking</a>
+          <a href="#">Wealth Management</a>
+          <a href="#">Investment Advisory</a>
+          <a href="#">Lending Solutions</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Company</h3>
+          <a href="#">About Us</a>
+          <a href="#">Our Philosophy</a>
+          <a href="#">Careers</a>
+          <a href="#">Sustainability</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <a href="#">+1 (888) 555-0199</a>
+          <a href="#">hello@nexus.bank</a>
+          <a href="#">Client Portal</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        &copy; 2026 Nexus Bank • All Rights Reserved • Member FDIC • Equal
+        Opportunity Lender
+      </div>
+    </footer>
+  </body>
+</html>
